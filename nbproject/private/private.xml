@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/controller/EditProfileServlet.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/profile.jsp</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/ReviewDAO.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/All%20menu.jsp</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/controller/LoginServlet.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/LoginDAO.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/RegisterDAO.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/editProfile.jsp</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/login.jsp</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/util/KoneksiDB.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/web/tambahTempat.jsp</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/controller/TempatServlet.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/Tempat.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/TempatDAO.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/controller/PencarianServlet.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/Pencarian.java</file>
+            <file>file:/C:/Users/lenovo/Downloads/JajanYukkFix/JajanYukk1/src/java/model/PencarianDAO.java</file>
+        </group>
+    </open-files>
+</project-private>
