@@ -1,204 +1,182 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Tambah Tempat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Tempat | JajanYuk</title>
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #F7EEC5;
-            font-family: Arial, sans-serif;
+        .add-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 24px 20px 70px;
         }
-
-        .container {
-            width: 80%;
-            margin: 40px auto;
-            padding: 40px;
-            background-color: #E7E6E6;
-            border-radius: 35px;
+        .add-card { padding: 34px 36px; }
+        .add-card h2 {
+            font-family: var(--jy-font-display);
+            margin: 0 0 4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .add-card .subtitle {
+            color: var(--jy-ink-faint);
+            font-size: 13.5px;
+            margin-bottom: 26px;
         }
 
         .upload-box {
             width: 100%;
-            height: 250px;
-            border: 3px dashed #000;
-            border-radius: 10px;
-            background-color: #F2F2F2;
+            height: 220px;
+            border: 2.5px dashed rgba(201,116,45,0.45);
+            border-radius: var(--jy-radius-md);
+            background-color: var(--jy-bg-soft);
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             cursor: pointer;
-            margin-bottom: 25px;
+            margin-bottom: 26px;
+            transition: border-color 0.25s ease, transform 0.2s ease;
+            text-align: center;
         }
-
-        .upload-box img {
-            width: 60px;
+        .upload-box:hover {
+            border-color: var(--jy-primary);
+            transform: translateY(-2px);
+        }
+        .upload-box .upload-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--jy-gradient-warm);
+            color: #fff8ec;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             margin-bottom: 10px;
         }
+        .upload-box p { margin: 0; font-weight: 600; color: var(--jy-ink-soft); font-size: 14px; }
+        .upload-box span { font-size: 12px; color: var(--jy-ink-faint); }
+        .upload-box.jy-has-preview {
+            border-style: solid;
+            border-color: var(--jy-primary);
+        }
+        .upload-box.jy-has-preview .upload-icon,
+        .upload-box.jy-has-preview p,
+        .upload-box.jy-has-preview span {
+            background: rgba(255,248,236,0.88);
+            backdrop-filter: blur(2px);
+            border-radius: 10px;
+            padding: 4px 10px;
+        }
+        .upload-box.jy-has-preview .upload-icon { padding: 0; }
 
         .form-row {
             display: flex;
-            gap: 25px;
-            margin-bottom: 10px;
+            gap: 22px;
+            flex-wrap: wrap;
         }
-
-        .form-group {
-            width: 50%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"], textarea, select, input[type="file"] {
-            padding: 10px;
-            border: 2px solid #d3d3d3;
-            border-radius: 8px;
-            font-size: 14px;
-        }
-
-        textarea {
-            height: 120px;
-            resize: none;
-        }
-
-        .btn-submit {
-            margin-top: 25px;
-            background-color: #F3E7C1;
-            border: 2px solid #000;
-            padding: 10px 28px;
-            border-radius: 10px;
-            font-size: 16px;
-            float: right;
-            cursor: pointer;
-        }
-
-        .btn-submit:hover {
-            background-color: #e8d9a4;
-        }
-
-        .alert {
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-
-        .alert-success {
-            color: green;
-            background-color: #d4edda;
-        }
-
-        .alert-danger {
-            color: red;
-            background-color: #f8d7da;
-        }
-
-        /* Kembali ke Menu Button */
-        .btn-back {
-            background-color: #f5eecd;
-            border: 2px solid #3d1d00;
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 16px;
-            display: inline-block;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .btn-back:hover {
-            background-color: #f5d1a3;
-        }
-
-        .btn-back i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
+        .form-row .jy-field { flex: 1; min-width: 220px; }
     </style>
-
-    <!-- Link ke Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body>
+<body class="jy-body">
 
-<div class="container">
+<div class="jy-blob jy-blob--a"></div>
+<div class="jy-blob jy-blob--c"></div>
 
-    <!-- Tombol Kembali ke Menu -->
-    <a href="All menu.jsp" class="btn-back">
-        <i class="bi bi-arrow-left-circle"></i> 
+<nav class="jy-navbar">
+    <a class="jy-brand" href="All menu.jsp">
+        <img src="icon.png" alt="JajanYuk">
+        JajanYuk
     </a>
+</nav>
 
-    <% String status = request.getParameter("status"); %>
-    <% if ("sukses".equals(status)) { %>
-        <div class="alert alert-success">
-            Data tempat berhasil disimpan.
-        </div>
-    <% } %>
+<div class="add-wrap">
+    <a href="All menu.jsp" class="jy-back"><i class="bi bi-arrow-left"></i> Kembali ke Menu</a>
 
-    <% String error = (String) request.getAttribute("error"); %>
-    <% if (error != null) { %>
-        <div class="alert alert-danger">
-            <%= error %>
-        </div>
-    <% } %>
+    <div class="jy-panel add-card jy-reveal">
+        <h2><i class="bi bi-shop" style="color:var(--jy-primary);"></i> Tambahkan Tempat Jajan</h2>
+        <p class="subtitle">Bagikan tempat jajan favoritmu supaya pengguna lain bisa menemukannya.</p>
 
-    <!-- Upload Foto -->
-    <div class="upload-box" onclick="document.getElementById('file').click();">
-        <img src="https://cdn-icons-png.flaticon.com/512/685/685655.png" alt="Upload">
-        <p>Klik untuk upload foto</p>
+        <% String status = request.getParameter("status"); %>
+        <% if ("sukses".equals(status)) { %>
+            <div class="jy-alert jy-alert--success">
+                <i class="bi bi-check-circle-fill"></i> Data tempat berhasil disimpan.
+            </div>
+        <% } %>
+
+        <% String error = (String) request.getAttribute("error"); %>
+        <% if (error != null) { %>
+            <div class="jy-alert jy-alert--danger">
+                <i class="bi bi-exclamation-triangle-fill"></i> <%= error %>
+            </div>
+        <% } %>
+
+        <!-- FORM -->
+        <form action="tambahTempat" method="post" enctype="multipart/form-data">
+
+            <!-- Upload Foto -->
+            <div class="upload-box" id="uploadBox" onclick="document.getElementById('file').click();">
+                <div class="upload-icon"><i class="bi bi-camera-fill"></i></div>
+                <p>Klik untuk upload foto</p>
+                <span>PNG atau JPG, disarankan rasio 4:3</span>
+            </div>
+            <input type="file" id="file" name="foto" accept="image/*" style="display:none;">
+
+            <!-- Nama & Alamat -->
+            <div class="form-row">
+                <div class="jy-field">
+                    <label>Nama Tempat</label>
+                    <input type="text" name="namaTempat" placeholder="Contoh: Warung Makan WDP" required>
+                </div>
+
+                <div class="jy-field">
+                    <label>Alamat</label>
+                    <textarea name="alamat" placeholder="Masukkan alamat lengkap" required></textarea>
+                </div>
+            </div>
+
+            <!-- Kategori & Rating -->
+            <div class="form-row">
+                <div class="jy-field">
+                    <label>Kategori</label>
+                    <select name="kategori" required>
+                        <option value="">Pilih kategori...</option>
+                        <option value="Makanan Berat">Makanan Berat</option>
+                        <option value="Makanan Penutup">Makanan Penutup</option>
+                        <option value="Minuman">Minuman</option>
+                        <option value="Camilan">Camilan</option>
+                    </select>
+                </div>
+
+                <div class="jy-field">
+                    <label>Rating Awal (1 - 5)</label>
+                    <select name="rating" class="jy-rating-select" required>
+                        <option value="">Pilih rating...</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-jy" style="margin-top:10px;"><i class="bi bi-cloud-arrow-up-fill"></i> Simpan Tempat</button>
+        </form>
     </div>
-
-    <!-- FORM -->
-    <form action="tambahTempat" method="post" enctype="multipart/form-data">
-        <input type="file" id="file" name="foto" style="display:none;">
-
-        <!-- Nama & Alamat -->
-        <div class="form-row">
-            <div class="form-group">
-                <label>Nama Tempat:</label>
-                <input type="text" name="namaTempat" placeholder="Contoh: Warung Makan WDP" required>
-            </div>
-
-            <div class="form-group">
-                <label>Alamat:</label>
-                <textarea name="alamat" placeholder="Masukkan alamat lengkap" required></textarea>
-            </div>
-        </div>
-
-        <!-- Kategori & Rating -->
-        <div class="form-row">
-            <div class="form-group">
-                <label>Kategori:</label>
-                <select name="kategori" required>
-                    <option value="">Pilih kategori...</option>
-                    <option value="Makanan Berat">Makanan Berat</option>
-                    <option value="Makanan Penutup">Makanan Penutup</option>
-                    <option value="Minuman">Minuman</option>
-                    <option value="Camilan">Camilan</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Rating (1 - 5):</label>
-                <select name="rating" required>
-                    <option value="">Pilih rating...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-        </div>
-
-        <button type="submit" class="btn-submit">Simpan</button>
-    </form>
-
 </div>
 
+<script src="js/app.js"></script>
 </body>
 </html>

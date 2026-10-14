@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : profile
     Created on : 13 Dec 2025, 07.48.19
     Author     : Organizer
@@ -8,153 +8,99 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - JajanYuk</title>
-    <!-- Bootstrap & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #F5ECCC;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: #f5eecd;
-            padding: 12px 0;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: #3d1d00;
-            font-size: 22px;
-            margin-right: 30px;
-        }
-        .navbar-nav {
-            gap: 15px;
-        }
-
-        .profile-container {
+        .profile-wrap {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 70px);
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            height: calc(100vh - 70px);
-            
+            justify-content: center;
+            padding: 30px 20px 60px;
         }
-
-        .card {
-            background: #fff;
-            padding: 30px;
-            width: 380px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            font-weight: bold;
+        .profile-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 34px;
             text-align: center;
-            margin-bottom: 25px;
         }
-
-        .profile-item {
-            margin-bottom: 15px;
+        .profile-card h2 {
+            font-family: var(--jy-font-display);
+            margin: 4px 0 26px;
         }
-
+        .profile-item { margin-bottom: 16px; text-align: left; }
         .profile-item label {
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--jy-ink-soft);
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
-
         .profile-item .value {
-            background: #f5f5f5;
-            padding: 10px;
-            border-radius: 6px;
-        }
-
-        .btn-edit {
-            display: block;
-            text-align: center;
-            background: #d9c37b;
-            color: #000;
-            padding: 10px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-
-        .btn-edit:hover {
-            background: #cbb05f;
-        }
-        /* Kembali ke Menu Button */
-        .btn-back {
-            background-color: #f5eecd;
-            border: 2px solid #3d1d00;
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 16px;
-            display: inline-block;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .btn-back:hover {
-            background-color: #f5d1a3;
-        }
-
-        .btn-back i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+            background: var(--jy-bg-soft);
+            padding: 11px 14px;
+            border-radius: var(--jy-radius-sm);
+            font-weight: 600;
+            color: var(--jy-ink);
         }
     </style>
-    <!-- Link ke Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body>
+<body class="jy-body">
+
+    <div class="jy-blob jy-blob--a"></div>
+    <div class="jy-blob jy-blob--b"></div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">JajanYuk</a>
-            </div>
+    <nav class="jy-navbar">
+        <a class="jy-brand" href="All menu.jsp">
+            <img src="icon.png" alt="JajanYuk">
+            JajanYuk
+        </a>
+        <div class="jy-nav-actions">
+            <a href="All menu.jsp" class="jy-back" style="margin:0;"><i class="bi bi-arrow-left"></i> Kembali</a>
         </div>
     </nav>
-    <!-- Tombol Kembali ke Menu -->
-    <a href="All menu.jsp" class="btn-back">
-        <i class="bi bi-arrow-left-circle"></i> 
-    </a>
-    <% 
+
+    <%
     String message = (String) session.getAttribute("message");
-        if (message != null) { 
+        if (message != null) {
     %>
-    <div style="color:green; text-align:center; margin-bottom:1px; font-weight:bold;">
-        <%= message %>
+    <div class="jy-alert jy-alert--success" style="max-width:400px; margin:20px auto 0; z-index:1; position:relative;">
+        <i class="bi bi-check-circle-fill"></i> <%= message %>
     </div>
-    <% 
+    <%
         // Hapus message supaya tidak muncul lagi di refresh berikutnya
         session.removeAttribute("message");
-    } 
+    }
     %>
 
     <!-- Profile Card -->
-    <div class="profile-container">
-        <div class="card">
-            <h2>Profile</h2>
+    <div class="profile-wrap">
+        <div class="jy-panel profile-card jy-reveal">
+            <div class="jy-avatar"><%= (session.getAttribute("name") != null && session.getAttribute("name").toString().length() > 0) ? session.getAttribute("name").toString().substring(0,1).toUpperCase() : "?" %></div>
+            <h2>Profile Saya</h2>
 
             <div class="profile-item">
-                <label>Username</label>
+                <label><i class="bi bi-person"></i> Username</label>
                 <div class="value">${sessionScope.username}</div>
             </div>
 
             <div class="profile-item">
-                <label>Full Name</label>
+                <label><i class="bi bi-badge-ad"></i> Full Name</label>
                 <div class="value">${sessionScope.name}</div>
             </div>
 
-            <a href="editProfile.jsp" class="btn-edit">Edit Profile</a>
+            <a href="editProfile.jsp" class="btn-jy btn-jy--block" style="margin-top:10px;"><i class="bi bi-pencil-square"></i> Edit Profile</a>
         </div>
     </div>
 

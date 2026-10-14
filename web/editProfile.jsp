@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : editprofile
     Created on : 16 Dec 2025, 07.08.27
     Author     : Organizer
@@ -8,146 +8,93 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>Profile - JajanYuk</title>
-    <!-- Bootstrap & Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile - JajanYuk</title>
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
+        .edit-profile-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 30px 20px 70px;
         }
-        body {
-            margin: 0;
-            background-color: #F6EFD1;
+        .edit-profile-card { padding: 34px 32px; }
+        .edit-profile-card h2 {
+            font-family: var(--jy-font-display);
+            margin: 4px 0 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
-
-        /* Navbar */
-        .navbar {
-            background-color: #f5eecd;
-            padding: 12px 0;
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: #3d1d00;
-            font-size: 22px;
-            margin-right: 30px;
-        }
-        .navbar-nav {
-            gap: 15px;
-        }
-
-        /* ===== CONTENT ===== */
-        .profile-container {
-            padding: 20px 40px 40px;
-        }
-        h1 {
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-        .card {
-            background-color: #A88774;
-            border-radius: 12px;
-            padding: 10px;
-            max-width: 500px;
-        }
-        .form-group {
-            margin-bottom: 16px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 6px;
-            font-weight: bold;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 6px 8px;
-            border-radius: 6px;
-            border: none;
-            outline: none;
-        }
-        .btn-save {
-            margin-top: 20px;
-            padding: 8px 12px;
-            border: none;
-            border-radius: 14px;
-            background-color: #F6EFD1;
-            font-weight: bold;
-            cursor: pointer;
-            float: right;
-        }
-        /* Kembali ke Menu Button */
-        .btn-back {
-            background-color: #f5eecd;
-            border: 2px solid #3d1d00;
-            padding: 8px 16px;
-            border-radius: 10px;
-            font-size: 16px;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .btn-back:hover {
-            background-color: #f5d1a3;
-        }
-
-        .btn-back i {
-            margin-right: 10px;
-            font-size: 1.2rem;
+        .edit-profile-card .subtitle {
+            color: var(--jy-ink-faint);
+            font-size: 13.5px;
+            margin-bottom: 24px;
         }
     </style>
 </head>
-<body>
+<body class="jy-body">
+
+<div class="jy-blob jy-blob--a"></div>
+<div class="jy-blob jy-blob--b"></div>
 
 <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">JajanYuk</a>
-            </div>
-        </div>
-    </nav>
-    <!-- Tombol Kembali ke Menu -->
-    <a href="profile.jsp" class="btn-back">
-        <i class="bi bi-arrow-left-circle"></i> 
+<nav class="jy-navbar">
+    <a class="jy-brand" href="All menu.jsp">
+        <img src="icon.png" alt="JajanYuk">
+        JajanYuk
     </a>
-<!-- CONTENT -->
-<div class="profile-container">
-    <% if (request.getAttribute("message") != null) { %>
-        <div style="color:red;border-radius: 12px;">
-            <%= request.getAttribute("message") %>
-        </div>
-    <% } %>
-    <h1>Profile</h1>
+</nav>
 
-    <div class="card">
+<div class="edit-profile-wrap">
+    <a href="profile.jsp" class="jy-back"><i class="bi bi-arrow-left"></i> Kembali ke Profile</a>
+
+    <div class="jy-panel edit-profile-card jy-reveal">
+        <% if (request.getAttribute("message") != null) { %>
+            <div class="jy-alert jy-alert--danger">
+                <i class="bi bi-exclamation-triangle-fill"></i> <%= request.getAttribute("message") %>
+            </div>
+        <% } %>
+
+        <div class="jy-avatar"><i class="bi bi-person-fill"></i></div>
+        <h2>Edit Profile</h2>
+        <p class="subtitle">Perbarui data akunmu. Kosongkan password jika tidak ingin mengubahnya.</p>
+
         <form action="EditProfileServlet" method="post">
-            <div class="form-group">
+            <div class="jy-field has-icon">
                 <label>Username</label>
+                <i class="bi bi-person jy-icon"></i>
                 <input type="text"
                        name="username"
                        value="${sessionScope.username}">
             </div>
 
-            <div class="form-group">
+            <div class="jy-field has-icon">
                 <label>Full Name</label>
+                <i class="bi bi-badge-ad jy-icon"></i>
                 <input type="text"
                        name="fullname"
                        value="${sessionScope.name}">
             </div>
 
-            <div class="form-group">
+            <div class="jy-field has-icon">
                 <label>Password Lama</label>
-                <input type="password" name="password">
+                <i class="bi bi-lock jy-icon"></i>
+                <input type="password" name="password" placeholder="Password saat ini">
             </div>
 
-            <div class="form-group">
+            <div class="jy-field has-icon">
                 <label>Password Baru</label>
-                <input type="password" name="newPassword">
+                <i class="bi bi-key jy-icon"></i>
+                <input type="password" name="newPassword" placeholder="Password baru (opsional)">
             </div>
 
-            <button type="submit" class="btn-save">Simpan</button>
+            <button type="submit" class="btn-jy btn-jy--block"><i class="bi bi-check-circle"></i> Simpan Perubahan</button>
         </form>
     </div>
 </div>

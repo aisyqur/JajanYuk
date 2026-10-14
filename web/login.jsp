@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : login
     Created on : 17 Nov 2025, 21.04.05
     Author     : User
@@ -6,162 +6,116 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - JajanYuk</title>
+    <link rel="icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
 
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #F3E8C9; /* warna krem */
-        }
-
-        /* NAVBAR */
-        .navbar {
+        .auth-wrap {
+            position: relative;
+            z-index: 1;
+            min-height: calc(100vh - 70px);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
-            background: transparent;
+            justify-content: center;
+            padding: 30px 20px 60px;
         }
-
-        .navbar .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
-
-        .nav-buttons button {
-            padding: 7px 18px;
-            cursor: pointer;
-            background: white;
-            border: 2px solid black;
-            border-radius: 8px;
-            font-weight: bold;
-            margin-left: 10px;
-        }
-
-        .nav-buttons button:hover {
-            background: #dedede;
-        }
-
-        /* LOGIN CONTAINER */
-        .login-container {
-            width: 380px;
-            margin: 50px auto;
+        .auth-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 36px;
             text-align: center;
-            padding: 30px;
         }
-
-        .login-container img {
-            width: 80px;
-            margin-bottom: 10px;
+        .auth-card .jy-avatar { width: 68px; height: 68px; margin-bottom: 6px; }
+        .auth-card img.logo {
+            width: 56px;
+            margin-bottom: 8px;
         }
-
-        .login-container h2 {
-            margin-bottom: 20px;
-            font-size: 26px;
+        .auth-card h2 {
+            font-family: var(--jy-font-display);
+            font-size: 28px;
+            margin: 4px 0 6px;
         }
-
-        .input-group {
-            text-align: left;
-            margin-bottom: 15px;
+        .auth-card .subtitle {
+            color: var(--jy-ink-faint);
+            font-size: 13.5px;
+            margin-bottom: 26px;
         }
-
-        .input-group label {
-            font-size: 14px;
-            margin-left: 3px;
-            font-weight: bold;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 8px;
-            border: 2px solid #ccc;
-            font-size: 16px;
-        }
-
-        /* LOGIN BUTTON */
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: #3A1F04; /* coklat gelap */
-            color: white;
-            font-size: 16px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* SIGNUP LINK */
         .signup-text {
-            margin-top: 10px;
-            font-size: 13px;
+            margin-top: 16px;
+            font-size: 13.5px;
+            color: var(--jy-ink-soft);
         }
-
         .signup-text a {
-            font-weight: bold;
+            font-weight: 700;
             text-decoration: none;
-            color: #3A1F04;
+            color: var(--jy-primary-dark);
         }
-
-        /* Error or success message */
-        .message {
-            color: red;
-            margin-top: 10px;
-        }
-
+        .signup-text a:hover { text-decoration: underline; }
     </style>
 </head>
-<body>
+<body class="jy-body">
 
-<!-- NAVBAR -->
-<div class="navbar">
-    <div class="logo">JajanYuk</div>
+    <div class="jy-blob jy-blob--a"></div>
+    <div class="jy-blob jy-blob--b"></div>
 
-    <div class="nav-buttons">
-        <button onclick="location.href='login.jsp'">Login</button>
-        <button onclick="location.href='register.jsp'">Sign Up</button>
+    <nav class="jy-navbar">
+        <a class="jy-brand" href="index.jsp">
+            <img src="icon.png" alt="JajanYuk">
+            JajanYuk
+        </a>
+        <div class="jy-nav-actions">
+            <a href="login.jsp" class="btn-jy btn-jy--ghost btn-jy--sm">Login</a>
+            <a href="register.jsp" class="btn-jy btn-jy--sm">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="auth-wrap">
+        <div class="jy-panel auth-card jy-reveal">
+
+            <img src="icon.png" alt="icon" class="logo">
+            <h2>Selamat Datang</h2>
+            <p class="subtitle">Masuk untuk lanjut menjelajah jajanan favoritmu</p>
+
+            <form action="login" method="post">
+
+                <div class="jy-field has-icon">
+                    <label>Username</label>
+                    <i class="bi bi-person jy-icon"></i>
+                    <input type="text" name="username" placeholder="Masukkan username" required>
+                </div>
+
+                <div class="jy-field has-icon">
+                    <label>Password</label>
+                    <i class="bi bi-lock jy-icon"></i>
+                    <input type="password" name="password" placeholder="Masukkan password" required>
+                </div>
+
+                <button type="submit" class="btn-jy btn-jy--block">
+                    <i class="bi bi-box-arrow-in-right"></i> Login
+                </button>
+
+                <p class="signup-text">
+                    Belum punya akun? <a href="register.jsp">Daftar di sini</a>
+                </p>
+
+                <% if (request.getAttribute("message") != null) { %>
+                    <div class="jy-alert jy-alert--danger" style="margin-top:16px;">
+                        <i class="bi bi-exclamation-triangle-fill"></i> ${message}
+                    </div>
+                <% } %>
+            </form>
+
+        </div>
     </div>
-</div>
 
-<!-- LOGIN FORM -->
-<div class="login-container">
-
-    <!-- ICON -->
-    <img src="icon.png" alt="icon">  <!-- ganti dengan path icon kamu -->
-
-    <h2>Login</h2>
-
-    <form action="login" method="post">
-
-        <div class="input-group">
-            <label>Username</label>
-            <input type="text" name="username" required>
-        </div>
-
-        <div class="input-group">
-            <label>Password</label>
-            <input type="password" name="password" required>
-        </div>
-
-        <p class="signup-text">
-            You don't have an account? click <a href="register.jsp">sign in</a>
-        </p>
-
-        <button type="submit" class="login-btn">Login</button>
-
-        <p class="message">${message}</p>
-    </form>
-
-</div>
-
+    <script src="js/app.js"></script>
 </body>
 </html>
